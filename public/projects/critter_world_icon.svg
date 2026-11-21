@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Grass tile with the board's hex outline -->
+  <rect width="64" height="64" fill="#86C45A"/>
+  <path d="M32 4.5 55.8 18.25V45.75L32 59.5 8.2 45.75V18.25Z" fill="#94CF66" stroke="#2F4A1F" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- Legs and antennae -->
+  <g stroke="#262626" stroke-width="1.9" stroke-linecap="round" fill="none">
+    <path d="M22.5 30 14 25.5M21.5 37.5H12.5M22.5 45 14.5 50"/>
+    <path d="M41.5 30 50 25.5M42.5 37.5H51.5M41.5 45 49.5 50"/>
+    <path d="M29.5 14.5 27 8.5M34.5 14.5 37 8.5"/>
+  </g>
+  <!-- Body: pink shell split down the middle, with spots -->
+  <ellipse cx="32" cy="38" rx="11.5" ry="15.5" fill="#E2558A"/>
+  <path d="M32 25.5V53" stroke="#A51D52" stroke-width="1.4" stroke-linecap="round"/>
+  <g fill="#A51D52">
+    <circle cx="26.5" cy="34" r="1.5"/>
+    <circle cx="37.5" cy="34" r="1.5"/>
+    <circle cx="27.5" cy="44" r="1.3"/>
+    <circle cx="36.5" cy="44" r="1.3"/>
+  </g>
+  <!-- Head with two eyes -->
+  <circle cx="32" cy="20.5" r="7.5" fill="#222222"/>
+  <circle cx="29" cy="19.5" r="1.9" fill="#E8EAF0"/>
+  <circle cx="35" cy="19.5" r="1.9" fill="#E8EAF0"/>
+</svg>

@@ -1,17 +1,20 @@
 :root {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  color-scheme: light dark;
-  color: #1a1a1a;
-  background-color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-}
+  --bg: #0b1026;
+  --bg-deep: #060916;
+  --panel: rgba(18, 26, 58, 0.85);
+  --ink: #e8eaf6;
+  --body: #c5cbea;
+  --muted: #a9b1d6;
+  --accent: #f5c86b;
+  --line: rgba(232, 234, 246, 0.12);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #e6e6e6;
-    background-color: #121212;
-  }
+  color-scheme: dark;
+  font-family: var(--sans);
+  color: var(--ink);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -20,10 +23,1055 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  background: var(--bg);
 }
 
 a {
-  color: inherit;
+  color: var(--ink);
+}
+a:hover {
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+}
+p {
+  margin: 0;
+}
+
+.italic {
+  font-style: italic;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Sky + layout ---------- */
+
+.sky {
+  min-height: 100vh;
+  overflow-x: clip;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1px 1px at 24px 36px, #ffffff, transparent),
+    radial-gradient(1px 1px at 130px 92px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 214px 160px, #ffffff, transparent),
+    radial-gradient(1px 1px at 318px 48px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 392px 236px, #f5e6b8, transparent),
+    radial-gradient(1px 1px at 66px 274px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 262px 318px, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 170px 22px, rgba(200, 210, 255, 0.8), transparent);
+  background-size: 440px 360px;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 104px 0;
+}
+.section--rule {
+  border-top: 1px solid var(--line);
+}
+.section--center {
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow--wide {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.section-heading--center {
+  align-items: center;
+  text-align: center;
+}
+.section-heading h2 {
+  font-size: 52px;
+  line-height: 1;
+}
+.skills .section-heading h2 {
+  font-size: 64px;
+}
+
+.date {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.date--accent {
+  color: var(--accent);
+}
+
+/* ---------- Animations ---------- */
+
+.tw {
+  animation: tw 3.2s ease-in-out infinite;
+}
+.tw2 {
+  animation: tw 4.6s ease-in-out infinite 1.2s;
+}
+@keyframes tw {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.spin {
+  animation: spin 140s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: min(100vh, 940px);
+  display: flex;
+  flex-direction: column;
+}
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 0;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 26px;
+  text-decoration: none;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  font-size: 15px;
+}
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+.hero-body {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 48px 72px;
+  padding: 40px 0 56px;
+}
+.portrait-wrap {
+  flex: 1 1 360px;
+  display: flex;
+  justify-content: center;
+}
+.portrait {
+  position: relative;
+  width: min(420px, 84vw);
+  aspect-ratio: 1 / 1;
+}
+.portrait-ring {
+  position: absolute;
+  border-radius: 50%;
+}
+.portrait-ring--outer {
+  inset: 0;
+  border: 1px dashed rgba(232, 234, 246, 0.22);
+}
+.portrait-ring--inner {
+  inset: 8%;
+  border: 1px solid var(--line);
+}
+.portrait-photo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 66%;
+  height: 66%;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: #121a3a;
+  box-shadow:
+    0 0 0 8px rgba(11, 16, 38, 0.9),
+    0 0 60px 6px rgba(245, 200, 107, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.portrait-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.portrait-photo span {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dot {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hero-copy {
+  flex: 999 1 480px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.hero-copy h1 {
+  font-size: clamp(52px, 7.5vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+.hero-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 580px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--body);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+.scroll-cue {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px 24px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ---------- Education ---------- */
+
+.education {
+  gap: 56px;
+}
+.education-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px 0;
+}
+.education-item {
+  flex: 1 1 320px;
+  max-width: 440px;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.education-item svg {
+  margin-bottom: 10px;
+}
+/* Takes the moon's place; filled and rounded like the Experience logos. */
+.education-logo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 11px;
+  overflow: hidden;
+  display: flex;
+}
+.education-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.education-item h3 {
+  font-size: 32px;
+  line-height: 1.15;
+}
+.education-item .body {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--body);
+}
+/* An entry with coursework spans the full row so its belt has room. */
+.education-item--wide {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+/* ---------- Coursework asteroid belt ---------- */
+
+.belt {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  padding-bottom: 28px; /* room for the curve's sag */
+}
+.belt-orbits {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.belt-orbits path {
+  stroke: rgba(232, 234, 246, 0.16);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+}
+.belt-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 34px; /* rows need extra room: each one sags toward the next */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rock {
+  position: relative;
+  padding: 9px 16px;
+  background: #222a50;
+  border: 1px solid rgba(232, 234, 246, 0.2);
+  font-size: 13px;
+  line-height: 1.2;
+  color: #d4d8f0;
+  white-space: nowrap;
+  translate: 0 var(--sag, 0px);
+}
+/* Four lumpy rock outlines, cycled. */
+.rock--0 {
+  border-radius: 46% 54% 40% 60% / 58% 44% 56% 42%;
+}
+.rock--1 {
+  border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%;
+}
+.rock--2 {
+  border-radius: 40% 60% 62% 38% / 52% 40% 60% 48%;
+}
+.rock--3 {
+  border-radius: 55% 45% 38% 62% / 40% 58% 42% 60%;
+}
+/* A speck of dust in the gap after every other rock. */
+.rock--1::after,
+.rock--3::after {
+  content: '';
+  position: absolute;
+  right: -22px;
+  top: 55%;
+  width: 8px;
+  height: 6px;
+  border-radius: 46% 54% 40% 60% / 58% 44% 56% 42%;
+  background: #2e3765;
+  border: 1px solid rgba(232, 234, 246, 0.15);
+}
+.drift-0 {
+  animation: rock-drift 9s ease-in-out infinite;
+}
+.drift-1 {
+  animation: rock-drift 11s ease-in-out infinite -3s;
+}
+.drift-2 {
+  animation: rock-drift 13s ease-in-out infinite -6s;
+}
+@keyframes rock-drift {
+  0%,
+  100% {
+    translate: 0 var(--sag, 0px);
+  }
+  50% {
+    translate: 0 calc(var(--sag, 0px) - 6px);
+  }
+}
+
+/* ---------- Experience constellation ---------- */
+
+.experience {
+  padding: 72px 0;
+}
+.cfield {
+  position: relative;
+}
+.cdecor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cdecor svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.cpl {
+  stroke: #ffffff;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-opacity: 0.45;
+  animation: cpl 4s ease-in-out infinite;
+}
+@keyframes cpl {
+  0%,
+  100% {
+    stroke-opacity: 0.35;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    stroke-opacity: 0.95;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.75));
+  }
+}
+.cspur {
+  stroke: rgba(232, 234, 246, 0.2);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.cdrift {
+  stroke: rgba(232, 234, 246, 0.4);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 7;
+  vector-effect: non-scaling-stroke;
+  animation: cdrift 2.6s linear infinite;
+}
+@keyframes cdrift {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+.cjoint,
+.cfaint {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.cjoint {
+  width: 6.4px;
+  height: 6.4px;
+  background: var(--ink);
+}
+.cfaint {
+  background: #c8d2ff;
+}
+
+.clist {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cnode {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.cstar {
+  position: absolute;
+}
+.cstar--next {
+  left: -9px;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px dashed rgba(232, 234, 246, 0.6);
+}
+.chalo {
+  position: absolute;
+  left: -24px;
+  top: -24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+}
+.cpulse {
+  animation: cpulse 3.4s ease-out infinite;
+}
+.cpulse2 {
+  animation: cpulse 3.4s ease-out infinite 1.7s;
+}
+@keyframes cpulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+.ccard {
+  position: absolute;
+  top: -26px;
+  width: min(340px, 32vw);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cnode--left .ccard {
+  right: 40px;
+  text-align: right;
+}
+.cnode--right .ccard {
+  left: 36px;
+}
+.ccard h3 {
+  font-size: 30px;
+  line-height: 1.1;
+}
+.cnode--next .ccard {
+  gap: 6px;
+  top: -24px;
+  width: min(320px, 30vw);
+}
+.cnode--next h3 {
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--body);
+}
+/* inline-flex so the card's text-align (right on left-side cards) places the row. */
+.ctitle-row {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-wrap: balance;
+}
+.ctitle-link {
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.ctitle-link:hover span:last-child {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+.ctitle-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+.clogo {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: inline-flex;
+}
+.clogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.crole {
+  font-size: 15px;
+  font-weight: 500;
+}
+.ccopy {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* ---------- Projects solar system ---------- */
+
+.band {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.projects-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+}
+.system {
+  flex: 1.6 1 520px;
+  min-width: 0;
+  position: relative;
+}
+.system > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: sun 6s ease-in-out infinite;
+  box-shadow:
+    0 0 0 10px rgba(245, 200, 107, 0.1),
+    0 0 64px 12px rgba(245, 200, 107, 0.35);
+}
+@keyframes sun {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 10px rgba(245, 200, 107, 0.1),
+      0 0 64px 12px rgba(245, 200, 107, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 14px rgba(245, 200, 107, 0.07),
+      0 0 80px 18px rgba(245, 200, 107, 0.4);
+  }
+}
+.planet-anchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.planet-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px;
+  background: none;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: inherit;
+}
+.planet-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.planet {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  transition: box-shadow 0.2s ease;
+}
+.planet-moon {
+  position: absolute;
+  right: -14px;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.planet-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232, 234, 246, 0.7);
+  transform: translate(-50%, -50%) rotate(-16deg);
+}
+/* Project icon (e.g. favicon) as the planet's whole surface. Clipped in its own
+   layer so the planet's moon and ring, which sit outside it, aren't cut off. */
+.planet-icon {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+}
+.planet-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.planet-label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.project-card {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid rgba(232, 234, 246, 0.14);
+}
+/* Sized by the image itself: full card width, its own aspect ratio, never
+   cropped. Very tall images are capped and shrink to stay in proportion. */
+.project-cover {
+  display: block;
+  align-self: flex-start;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #1a2450;
+  margin-bottom: 4px;
+  animation: cover-in 0.3s ease;
+}
+@keyframes cover-in {
+  from {
+    opacity: 0;
+  }
+}
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.project-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.project-card h3 {
+  font-size: 34px;
+  line-height: 1.1;
+}
+.project-copy {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body);
+}
+.project-tech {
+  font-size: 13px;
+  color: var(--muted);
+}
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ---------- Skills ---------- */
+
+.skills {
+  gap: 48px;
+  padding-bottom: 120px;
+}
+.skill-row {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding: 28px 0;
+}
+.skill-row + .skill-row {
+  border-top: 1px solid var(--line);
+}
+.skill-row-label {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.skill-row-num {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.skill-row-label h3 {
+  font-size: 28px;
+  line-height: 1.15;
+}
+.skill-cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+/* Logo on top, name underneath. Items without a logo keep the same height
+   so every row lines up. */
+.skill-card {
+  min-height: 84px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.skill-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.skill-name {
+  font-size: 13px;
+  line-height: 1.3;
+  color: #d4d8f0;
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  border-top: 1px solid var(--line);
+  background: rgba(5, 8, 22, 0.8);
+}
+.contact-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 112px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.contact-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 56px;
+}
+.contact-lead {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-lead h2 {
+  font-size: clamp(56px, 8vw, 104px);
+  line-height: 0.95;
+  color: var(--body);
+}
+.contact-blurb {
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--body);
+}
+.contact-details {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact-link {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.2;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  overflow-wrap: anywhere;
+}
+.socials {
+  display: flex;
+  gap: 14px;
+  padding-top: 4px;
+}
+.social {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 234, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+.social:hover {
+  border-color: var(--accent);
+}
+.social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+/* Hero row: smaller, but still a 44px touch target. */
+.social--sm {
+  width: 44px;
+  height: 44px;
+}
+.contact-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+.contact-bottom p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-bottom a {
+  color: var(--muted);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+  .container {
+    padding: 0 16px;
+  }
+  .contact-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Constellation becomes a vertical timeline */
+  .cfield {
+    height: auto !important;
+  }
+  .cdecor {
+    display: none;
+  }
+  .clist {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 44px;
+    margin-left: 12px;
+    border-left: 1px dashed rgba(232, 234, 246, 0.3);
+  }
+  .cnode {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: auto;
+    height: auto;
+  }
+  .cstar {
+    left: -58px !important;
+    top: 2px !important;
+  }
+  .chalo {
+    left: -65px;
+    top: -5px;
+  }
+  .ccard,
+  .cnode--next .ccard {
+    position: static;
+    width: auto;
+  }
+  .cnode--left .ccard {
+    text-align: left;
+  }  .system {
+    flex-basis: 100%;
+  }
+
+  .skill-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .planet-label {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .tw,
+  .tw2,
+  .spin,
+  .cpl,
+  .cdrift,
+  .cpulse,
+  .cpulse2,
+  .sun,
+  .drift-0,
+  .drift-1,
+  .drift-2 {
+    animation: none;
+  }
+  .cpl {
+    stroke-opacity: 0.5;
+  }
 }
