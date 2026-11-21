@@ -11,7 +11,7 @@ export function Contact({ profile }: { profile: Profile }) {
       <div className="contact-inner">
         <div className="contact-top">
           <div className="contact-lead">
-            <p className="eyebrow">V</p>
+            <p className="eyebrow">VI</p>
             <h2>
               Let's
               <br />

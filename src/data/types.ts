@@ -85,6 +85,28 @@ export interface SkillGroup {
   items: (string | Skill)[]
 }
 
+export interface Photo {
+  src: string
+  /** Describes the photo for screen readers; defaults to "<hobby> photo N". */
+  alt?: string
+}
+
+/** Something you do outside of code: one row in the "Beyond code" section. */
+export interface Interest {
+  name: string
+  /** Optional small line above the name, e.g. 'Since 2014'. */
+  meta?: string
+  /**
+   * Photos for this hobby. Put them in `public/interests/` and reference them
+   * as "/interests/trumpet.jpg". The first is shown large; with more than one,
+   * thumbnails appear underneath to switch between them. A plain string is
+   * shorthand for a photo with no alt text.
+   */
+  photos?: (string | Photo)[]
+  /** The writing, one string per paragraph. */
+  text?: string[]
+}
+
 export interface Contact {
   blurb: string
   email?: string
@@ -108,5 +130,7 @@ export interface Profile {
   /** Each one becomes a planet; the first is the innermost orbit. */
   projects: Project[]
   skills: SkillGroup[]
+  /** Hobbies and interests; the section is hidden when empty. */
+  beyondCode: Interest[]
   contact: Contact
 }
