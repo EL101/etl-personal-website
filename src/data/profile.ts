@@ -29,12 +29,11 @@ export const profile: Profile = {
       end: 'Present',
       gpa: '4.13',
       coursework: [
-        'Honors Object-Oriented Design and Data Structures',
-        'Functional Programming',
-        'Machine Learning',
-        'Linear Algebra',
-        'Computer System Organization and Programming',
-        
+        'CS 2112: Honors Object-Oriented Design and Data Structures',
+        'CS 3110: Functional Programming',
+        'CS 3780: Machine Learning',
+        'MATH 2940: Linear Algebra',
+        'CS 3410: Computer System Organization and Programming',
       ]
     },
   ],

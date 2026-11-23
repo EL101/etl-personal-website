@@ -349,97 +349,57 @@ p {
   line-height: 1.5;
   color: var(--body);
 }
-/* An entry with coursework spans the full row so its belt has room. */
+/* An entry with coursework spans the full row so its two-column list has room. */
 .education-item--wide {
   flex-basis: 100%;
   max-width: 100%;
 }
 
-/* ---------- Coursework asteroid belt ---------- */
+/* ---------- Coursework star list ---------- */
 
-.belt {
-  position: relative;
+.coursework {
   width: 100%;
-  margin-top: 20px;
-  padding-bottom: 28px; /* room for the curve's sag */
+  max-width: 760px;
+  margin-top: 32px;
 }
-.belt-orbits {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: visible;
-  pointer-events: none;
-}
-.belt-orbits path {
-  stroke: rgba(232, 234, 246, 0.16);
-  stroke-width: 1;
-  stroke-dasharray: 3 7;
-}
-.belt-list {
-  position: relative;
+/* "Coursework" label between two hairlines. */
+.coursework-label {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 34px; /* rows need extra room: each one sags toward the next */
-  margin: 0;
+  gap: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.coursework-label::before,
+.coursework-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.coursework-list {
+  margin: 20px 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 48px;
+  text-align: left;
 }
-.rock {
-  position: relative;
-  padding: 9px 16px;
-  background: #222a50;
-  border: 1px solid rgba(232, 234, 246, 0.2);
-  font-size: 13px;
-  line-height: 1.2;
-  color: #d4d8f0;
-  white-space: nowrap;
-  translate: 0 var(--sag, 0px);
+.coursework-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--body);
 }
-/* Four lumpy rock outlines, cycled. */
-.rock--0 {
-  border-radius: 46% 54% 40% 60% / 58% 44% 56% 42%;
-}
-.rock--1 {
-  border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%;
-}
-.rock--2 {
-  border-radius: 40% 60% 62% 38% / 52% 40% 60% 48%;
-}
-.rock--3 {
-  border-radius: 55% 45% 38% 62% / 40% 58% 42% 60%;
-}
-/* A speck of dust in the gap after every other rock. */
-.rock--1::after,
-.rock--3::after {
-  content: '';
-  position: absolute;
-  right: -22px;
-  top: 55%;
-  width: 8px;
-  height: 6px;
-  border-radius: 46% 54% 40% 60% / 58% 44% 56% 42%;
-  background: #2e3765;
-  border: 1px solid rgba(232, 234, 246, 0.15);
-}
-.drift-0 {
-  animation: rock-drift 9s ease-in-out infinite;
-}
-.drift-1 {
-  animation: rock-drift 11s ease-in-out infinite -3s;
-}
-.drift-2 {
-  animation: rock-drift 13s ease-in-out infinite -6s;
-}
-@keyframes rock-drift {
-  0%,
-  100% {
-    translate: 0 var(--sag, 0px);
-  }
-  50% {
-    translate: 0 calc(var(--sag, 0px) - 6px);
-  }
+.education-item .coursework-list svg {
+  flex: none;
+  margin: 4px 0 0;
 }
 
 /* ---------- Experience constellation ---------- */
@@ -1138,6 +1098,9 @@ p {
   .container {
     padding: 0 16px;
   }
+  .coursework-list {
+    grid-template-columns: 1fr;
+  }
   .contact-inner {
     padding-left: 16px;
     padding-right: 16px;
@@ -1218,10 +1181,7 @@ p {
   .cdrift,
   .cpulse,
   .cpulse2,
-  .sun,
-  .drift-0,
-  .drift-1,
-  .drift-2 {
+  .sun {
     animation: none;
   }
   .cpl {

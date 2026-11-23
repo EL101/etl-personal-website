@@ -1,6 +1,6 @@
 import type { Education as EducationEntry } from '../data/types'
-import { AsteroidBelt } from './AsteroidBelt'
 import { SectionHeading } from './SectionHeading'
+import { Sparkle } from './Sparkle'
 
 function Moon({ crescent }: { crescent: boolean }) {
   return crescent ? (
@@ -39,7 +39,19 @@ export function Education({ entries }: { entries: EducationEntry[] }) {
             <h3>{e.school}</h3>
             <p className="body">{e.degree}</p>
             {e.gpa && <p className="body">GPA: {e.gpa}</p>}
-            {e.coursework && e.coursework.length > 0 && <AsteroidBelt courses={e.coursework} />}
+            {e.coursework && e.coursework.length > 0 && (
+              <div className="coursework">
+                <p className="coursework-label">Relevant Coursework</p>
+                <ul className="coursework-list">
+                  {e.coursework.map((course, j) => (
+                    <li key={`${course}-${j}`}>
+                      <Sparkle size={14} fill="var(--accent)" />
+                      {course}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         ))}
       </div>
