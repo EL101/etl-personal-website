@@ -16,7 +16,7 @@ export const profile: Profile = {
   city: 'New York, NY',
   bio: [
     "I'm an aspiring software engineer interested in AI, full-stack development, and solving hard problems",
-    "Outside of that, I also love playing the trumpet and going to the gym!",
+    "Outside of that, I also love playing the trumpet and exploring new places!",
   ],
   photo: '/profile.jpeg',
 
@@ -162,21 +162,24 @@ export const profile: Profile = {
         '/interests/trumpet_playing.png'
       ],
       text: [
-        "I've been playing the trumpet ever since 6th grade! I enjoyed it so much that I continued playing in high school and now in college, where I play in the marching band (pictured here)."
+        "I've been playing the trumpet ever since 6th grade! I continued playing in high school and now in college, where I play in the marching band (pictured here)."
       ]
     },
     { 
       name: 'Exploring',
+      photos: [
+        '/interests/yosemite_redwoods.jpeg'
+      ],
       text: [
-        "I love exploring new places, especially ones filled with nature. Here are some pictures of places I've been!"
+        "I love exploring new places, especially ones filled with nature. Here's a picture I took this past summer during my trip to Yosemite!"
       ]
     },
-    { 
-      name: 'Gym',
-      text: [
-        "I started working out here and there during COVID by doing calisthenics at home, and first stepped foot in a commercial gym at the end of my senior year of high school. Now I regularly go and really enjoy it1"
-      ]
-    },
+    // { 
+    //   name: 'Gym',
+    //   text: [
+    //     "I started working out here and there during COVID by doing calisthenics at home, and first stepped foot in a commercial gym at the end of my senior year of high school. Now I regularly go and really enjoy it1"
+    //   ]
+    // },
   ],
 
   contact: {

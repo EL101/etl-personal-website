@@ -12,13 +12,10 @@ const NAV = [
 ] as const
 
 // Decorative stars around the portrait: [left %, top %, size %, colour, twinkle class]
+// Kept to two small, still sparkles; add 'tw' or 'tw2' as the class to make one twinkle.
 const PORTRAIT_STARS: [number, number, number, string, string][] = [
-  [6, 14, 9, 'var(--accent)', 'tw'],
-  [82, 6, 6, '#FFFFFF', 'tw2'],
-  [90, 58, 5, '#C8D2FF', 'tw'],
-  [74, 84, 8, 'var(--accent)', 'tw2'],
-  [10, 80, 4.5, '#FFFFFF', 'tw'],
-  [46, -2, 4, '#FFFFFF', 'tw2'],
+  [8, 14, 6, 'var(--accent)', ''],
+  [78, 86, 4.5, '#FFFFFF', ''],
 ]
 const PORTRAIT_DOTS: [number, number, number, string][] = [
   [95.5, 36, 14, '#9FB4FF'],
