@@ -154,11 +154,11 @@ export const profile: Profile = {
     },
   ],
 
-  beyondCode: [
+  hobbies: [
     { 
       name: 'Trumpet',
       photos: [
-        '/interests/trumpet_playing.png'
+        '/hobbies/trumpet_playing.png'
       ],
       text: [
         "I've been playing the trumpet ever since 6th grade! I continued playing in high school and now in college, where I play in the marching band (pictured here)."
@@ -167,7 +167,7 @@ export const profile: Profile = {
     { 
       name: 'Exploring',
       photos: [
-        '/interests/yosemite_redwoods.jpeg'
+        '/hobbies/yosemite_redwoods.jpeg'
       ],
       text: [
         "I love exploring new places, especially ones filled with nature. Here's a picture I took this past summer during my trip to Yosemite!"

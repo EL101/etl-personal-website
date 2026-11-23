@@ -7,7 +7,7 @@ const NAV = [
   ['experience', 'Experience'],
   ['projects', 'Projects'],
   ['skills', 'Skills'],
-  ['beyond-code', 'Beyond code'],
+  ['hobbies', 'Hobbies'],
   ['contact', 'Contact'],
 ] as const
 

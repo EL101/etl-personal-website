@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { Interest, Photo } from '../data/types'
+import type { Hobby, Photo } from '../data/types'
 import { SectionHeading } from './SectionHeading'
 
 const toPhoto = (p: string | Photo): Photo => (typeof p === 'string' ? { src: p } : p)
@@ -42,11 +42,11 @@ function PhotoGallery({ name, photos }: { name: string; photos: Photo[] }) {
  * One row per hobby: photos on one side, writing on the other, swapping sides
  * each row. A dashed line with a star links consecutive rows.
  */
-export function BeyondCode({ items }: { items: Interest[] }) {
+export function Hobbies({ items }: { items: Hobby[] }) {
   if (items.length === 0) return null
   return (
-    <section id="beyond-code" className="section section--rule beyond">
-      <SectionHeading numeral="V" title="Beyond code" align="center" />
+    <section id="hobbies" className="section section--rule hobbies-section">
+      <SectionHeading numeral="V" title="Hobbies" align="center" />
       <ul className="hobbies">
         {items.map((it, i) => {
           const photos = (it.photos ?? []).map(toPhoto)

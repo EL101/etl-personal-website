@@ -1,8 +1,8 @@
-import { BeyondCode } from './components/BeyondCode'
 import { Constellation } from './components/Constellation'
 import { Contact } from './components/Contact'
 import { Education } from './components/Education'
 import { Hero } from './components/Hero'
+import { Hobbies } from './components/Hobbies'
 import { Skills } from './components/Skills'
 import { SolarSystem } from './components/SolarSystem'
 import { profile } from './data/profile'
@@ -19,7 +19,7 @@ function App() {
       <SolarSystem projects={profile.projects} />
       <div className="container">
         <Skills groups={profile.skills} />
-        <BeyondCode items={profile.beyondCode} />
+        <Hobbies items={profile.hobbies} />
       </div>
       <Contact profile={profile} />
     </div>

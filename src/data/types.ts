@@ -91,14 +91,14 @@ export interface Photo {
   alt?: string
 }
 
-/** Something you do outside of code: one row in the "Beyond code" section. */
-export interface Interest {
+/** Something you do outside of code: one row in the "Hobbies" section. */
+export interface Hobby {
   name: string
   /** Optional small line above the name, e.g. 'Since 2014'. */
   meta?: string
   /**
-   * Photos for this hobby. Put them in `public/interests/` and reference them
-   * as "/interests/trumpet.jpg". The first is shown large; with more than one,
+   * Photos for this hobby. Put them in `public/hobbies/` and reference them
+   * as "/hobbies/trumpet.jpg". The first is shown large; with more than one,
    * thumbnails appear underneath to switch between them. A plain string is
    * shorthand for a photo with no alt text.
    */
@@ -131,6 +131,6 @@ export interface Profile {
   projects: Project[]
   skills: SkillGroup[]
   /** Hobbies and interests; the section is hidden when empty. */
-  beyondCode: Interest[]
+  hobbies: Hobby[]
   contact: Contact
 }
