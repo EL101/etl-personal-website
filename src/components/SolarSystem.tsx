@@ -62,7 +62,6 @@ export function SolarSystem({ projects }: { projects: Project[] }) {
 
   if (projects.length === 0) return null
   const active = Math.min(selected, projects.length - 1)
-  const project = projects[active]
   const pause = () => (paused.current = true)
   const resume = () => (paused.current = false)
 
@@ -151,32 +150,46 @@ export function SolarSystem({ projects }: { projects: Project[] }) {
               })}
             </div>
 
+            {/* Every project is rendered into the same grid cell, so the card is
+                always as tall as the tallest one and switching never resizes the
+                page; only the selected pane is visible. */}
             <div className="project-card" aria-live="polite">
-              {project.image && (
-                <img
-                  key={project.image}
-                  className="project-cover"
-                  src={project.image}
-                  alt={project.imageAlt ?? `${project.name} preview`}
-                />
-              )}
-              <p className="date project-meta">
-                <span aria-hidden="true" className="project-dot" style={{ background: orbits[active].planet.color }} />
-                Project {String(active + 1).padStart(2, '0')}
-                {project.year ? ` · ${project.year}` : ''}
-              </p>
-              <h3>{project.name}</h3>
-              <p className="project-copy">{project.description}</p>
-              {project.tech.length > 0 && <p className="project-tech">{project.tech.join(' · ')}</p>}
-              {project.links && project.links.length > 0 && (
-                <div className="project-links">
-                  {project.links.map((l) => (
-                    <a key={l.label + l.href} href={l.href} target="_blank" rel="noreferrer">
-                      {l.label} ↗
-                    </a>
-                  ))}
-                </div>
-              )}
+              {projects.map((p, i) => {
+                const isActive = i === active
+                return (
+                  <div
+                    key={`${p.name}-${i}`}
+                    className={`project-pane ${isActive ? 'is-active' : ''}`}
+                    aria-hidden={!isActive}
+                    inert={!isActive}
+                  >
+                    {p.image && (
+                      <img
+                        className="project-cover"
+                        src={p.image}
+                        alt={p.imageAlt ?? `${p.name} preview`}
+                      />
+                    )}
+                    <p className="date project-meta">
+                      <span aria-hidden="true" className="project-dot" style={{ background: orbits[i].planet.color }} />
+                      Project {String(i + 1).padStart(2, '0')}
+                      {p.year ? ` · ${p.year}` : ''}
+                    </p>
+                    <h3>{p.name}</h3>
+                    <p className="project-copy">{p.description}</p>
+                    {p.tech.length > 0 && <p className="project-tech">{p.tech.join(' · ')}</p>}
+                    {p.links && p.links.length > 0 && (
+                      <div className="project-links">
+                        {p.links.map((l) => (
+                          <a key={l.label + l.href} href={l.href} target="_blank" rel="noreferrer">
+                            {l.label} ↗
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
